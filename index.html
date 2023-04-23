@@ -1,39 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/style.css" />
     <title>valorant pixelated</title>
-</head>
-<body>
-    <section class="title-section"> 
-
+    <style>
+      @import url("https://fonts.google.com/specimen/Press+Start+2P?category=Display,Monospace");
+    </style>
+  </head>
+  <body>
+    <div class="title-and-game">
+    <section class="title-section">
+      <div class="title">
+        <img class="valorant-logo" src="./textures/valorant-logo.png" alt="valorant-logo">
+        <h1><i>Pixelorant</i></h1>
+        <p>A 2D Valorant Experience</p>
+      </div>
     </section>
+
     <section class="game-section">
+      <div class="game-and-description">
         <div>
-            <canvas id="canvas" width="800" height="500"></canvas>
+            <p class="description">You are the last player standing! Help Sage find the bomb to defuse it. You have 1 minute or it will explode, killing all of the city Breeze. Beware of the enemy team passing by, they cannot touch you. Good luck!</p>
         </div>
-        <div class="button-container">
-            <div id="lef-bttn" class="button-style">
-                <a href="">left</a>
-            </div>
-            <div class="center-buttons">
-                <div id="up-bttn" class="button-style">
-                    <a href="">up</a>
-                </div>
-                <div id="down-bttn" class="button-style">
-                    <a href="">down</a>
-                </div>
-            </div>
-            <div id="righ-bttn" class="button-style" >
-                <a href="">right</a>
-            </div>
+
+        <canvas id="canvas" width="800" height="500"></canvas>
+        
+        <div>
+            <p class="description">Use the arrow keys to move and (se calhar) the mouse to point and space bar to shoot. The timer is displayed at the corner of the screen</p>
         </div>
+      </div>
+    </div>
+      <div class="button-container">
+        <div id="lef-bttn" class="button-style">
+          <a href="">left</a>
+        </div>
+        <div class="center-buttons">
+          <div id="up-bttn" class="button-style">
+            <a href="">up</a>
+          </div>
+          <div id="down-bttn" class="button-style">
+            <a href="">down</a>
+          </div>
+        </div>
+        <div id="righ-bttn" class="button-style">
+          <a href="">right</a>
+        </div>
+      </div>
     </section>
     <script type="text/javascript" src="/scripts/player&background.js"></script>
     <script type="text/javascript" src="/scripts/game.js"></script>
     <script type="text/javascript" src="/scripts/main.js"></script>
-</body>
+  </body>
 </html>
