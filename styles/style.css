@@ -2,6 +2,8 @@ body {
   margin: 0;
   padding: 0;
   background-color: black;
+  background-image: url('../web-images/valorantWebWallpaper.png');
+  background-size: cover;
   font-family: "Cutive Mono", monospace;
 }
 
@@ -35,7 +37,8 @@ h1 {
 
 canvas {
   background-color: #ffc90d;
-  border: 4mm ridge rgb(255, 0, 0);
+  border: 4mm ridge rgb(210, 76, 99);
+
 }
 
 .title {
@@ -81,6 +84,7 @@ canvas {
   height: 40px;
   width: 100px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -91,6 +95,11 @@ canvas {
   border: 5px solid orange;
   border-radius: 10px;
 }
+
+.button-img {
+  width: 150px;
+}
+
 a:link {
   color: black;
   text-decoration: none;

@@ -1,9 +1,14 @@
-const canvas = document.getElementById("canvas");
-const ctx = canvas.getContext("2d");
+console.log('hello vi and p')
 
-const player = new Sprite(360, 210, characterImg);              
-const background = new Sprite(250, -180, backgroundImg);
-const bomb = new Sprite(360, 430, bombImg);
+const canvas = document.getElementById("canvas"); //canvas
+const ctx = canvas.getContext("2d"); //2d
+
+const player = new Sprite(360, 210, characterImg); // creates new object for the characterimg        
+const background = new Sprite(250, -180, backgroundImg); // creates new object for the backgroundimg    
+const bomb = new Sprite(360, 430, bombImg); // creates new object for the bomnimg
+const spikePlanted = new Audio("../textures/spike-planted.mp3")
+const spikeMain = new Audio("../textures/spike-main.m4a")
+
 const game = new Game(background, player, boundaries, bomb);                 // Creates an instance of the Game
 
 window.onload = () => {
