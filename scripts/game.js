@@ -1,12 +1,11 @@
 class Game {
   // game logic
-  constructor(background, player, boundaries, bomb) {
+  constructor(background, player, bomb) {
     this.width = canvas.width;
     this.height = canvas.height;
     this.player = player;
     this.bomb = bomb;
     this.background = background;
-    this.boundaries = boundaries;
     this.intervalId = null;
     this.frames = 0;
     this.timer = 6000;
@@ -21,20 +20,12 @@ class Game {
   update = () => {
     this.frames++; // Counts the frames since the game started
     this.clear(); // Clears previous Frame
-
-    //console.log(this.collisions());
     this.background.draw(); // draws the background
-
-    this.boundaries.forEach((boundary) => {
-      boundary.draw(); // draws each boundary
-      //boundary.logPos(); // log position of
-    });
-
     this.player.draw();
     //this.player.logPos();
     this.bomb.draw();
 
-    //checkWinCondition()
+    this.checkWinCondition()
     this.loseCondition();
     this.countdown();
   };
@@ -57,119 +48,81 @@ class Game {
   clear() {
     ctx.clearRect(0, 0, this.width, this.height); // clears previous Frame
   }
+  
 
-  collisions() {
-    for (let i = 0; i < boundaries.length; i++) {
-      return boundaries[i].y >= 250;
-      /*&& //top
-        boundaries[i].x <= 400 && //left
-        boundaries[i].x + 40 >= 360 //right */
+  moveUp() {
+    let a = playerPosition[0];
+    let b = playerPosition[1];
+
+    if (collisionMap[a-1][b] === 2){
+      this.bomb.y += 40;
+      this.background.y += 40;
+      playerPosition[0] -=1;
+    } else { 
+    console.log("collision up");
     }
   }
 
-  moveUp() {
-    this.boundaries.forEach((boundary) => {
-      // for each element of array,
-      boundary.y += 10;
-    });
-    this.bomb.y += 10;
-    this.background.y += 10;
-  }
-
   moveDown() {
-    this.boundaries.forEach((boundary) => {
-      boundary.y -= 10;
-    });
-    this.bomb.y -= 10;
-    this.background.y -= 10;
+    let a = playerPosition[0];
+    let b = playerPosition[1];
+
+    if(collisionMap[a+2][b] === 2){
+      this.bomb.y -= 40;
+      this.background.y -= 40;
+      playerPosition[0] +=1;
+    } else {
+      console.log("collision down");
+    }
   }
 
   moveLeft() {
-    this.boundaries.forEach((boundary) => {
-      boundary.x += 10;
-    });
-    this.bomb.x += 10;
-    this.background.x += 10;
+    let a = playerPosition[0];
+    let b = playerPosition[1];
+
+    if(collisionMap[a][b-1] === 2){
+    this.bomb.x += 40;
+    this.background.x += 40;
+    playerPosition[1] -=1;
+    } else {
+      console.log("collision left");
+    }
   }
 
   moveRight() {
-    this.boundaries.forEach((boundary) => {
-      boundary.x -= 10;
-    });
-    this.bomb.x -= 10;
-    this.background.x -= 10;
+    let a = playerPosition[0];
+    let b = playerPosition[1];
+
+    if(collisionMap[a][b+2] === 2){
+      this.bomb.x -= 40;
+      this.background.x -= 40;
+      playerPosition[1] +=1;
+    } else {
+      console.log("collision right");
+    }
   }
 
-  checkWinCondition() {}
+  checkWinCondition() {
+    let a = playerPosition[0];
+    let b = playerPosition[1];
+
+    if (collisionMap[a][b-1] === 3 ||
+        collisionMap[a][b+2] === 3 ||
+        collisionMap[a+2][b] === 3 ||
+        collisionMap[a-1][b] === 3) {
+          console.log("bomb here")
+          
+          ctx.fillStyle = "black";
+          ctx.font = "30px Cutive Mono";
+          ctx.fillText("You win", 400 - 30, 250);
+    }
+  }
 
   loseCondition() {
     if (this.timer <= 0) {
       ctx.fillStyle = "black";
       ctx.font = "30px Cutive Mono";
       ctx.fillText("Game Over", 400 - 30, 250);
-    }
-  }
-}
-
-const map = [
-  ["-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-",],//20 x 22
-  ["-","0","0","0","0","0","0","0","0","0","0","0","-","0","0","0","0","0","0","-",],
-  ["-","0","0","0","0","0","0","0","0","0","0","0","-","0","0","0","0","0","0","-",],
-  ["-","0","0","0","0","0","0","0","0","0","0","0","-","0","0","0","0","0","0","-",],
-  ["-","0","0","0","0","0","0","0","0","0","0","0","-","0","0","0","0","0","0","-",],
-  ["-","0","0","0","0","0","0","0","0","0","0","0","-","0","0","0","0","0","0","-",],
-  ["-","0","0","0","0","0","0","0","0","0","0","0","-","0","0","0","0","0","0","-",],
-  ["-","0","0","0","0","0","0","0","0","0","0","0","-","0","0","0","0","0","0","-",],
-  ["-","0","0","0","0","0","0","0","0","0","0","0","-","0","0","0","0","0","0","-",],
-  ["-","0","0","0","0","0","0","0","0","0","0","0","-","0","0","0","0","0","0","-",],
-  ["-","0","0","0","0","0","0","0","0","0","0","0","-","0","0","0","0","0","0","-",],
-  ["-","0","0","0","0","0","0","0","0","0","0","0","-","0","0","0","0","0","0","-",],
-  ["-","0","0","0","0","0","0","0","0","0","0","0","-","0","0","0","0","0","0","-",],
-  ["-","0","0","0","0","0","0","0","0","0","0","0","-","0","0","0","0","0","0","-",],
-  ["-","0","0","0","0","0","0","0","0","0","0","0","-","0","0","0","0","0","0","-",],
-  ["-","0","0","0","0","0","0","0","0","0","0","0","-","0","0","0","0","0","0","-",],
-  ["-","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","-",],
-  ["-","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","-",],
-  ["-","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","-",],
-  ["-","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","-",],
-  ["-","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","0","-",],
-  ["-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-","-",],
-];
-
-class Boundary {
-  constructor(x, y) {
-    this.x = x;
-    this.y = y;
-    this.width = 40;
-    this.height = 40;
-  }
-
-  /*logPos() {
-    ctx.fillStyle = "black";
-    ctx.fillText("x: " + this.x, this.x, this.y + 10);
-    ctx.fillText("y: " + this.y, this.x, this.y);
-  }*/
-
-  draw() {
-    ctx.fillStyle = "red";
-    ctx.fillRect(this.x, this.y, this.width, this.height);
-  }
-}
-
-const boundaries = [];
-
-for (let i = 0; i < map.length; i++) {
-  // loop each row of the map (index i of map array)
-  for (let j = 0; j < map[i].length; j++) {
-    // loop each column (index j of arrays within map array)
-    if (map[i][j] === "-") {
-      // if loop finds '-'
-      boundaries.push(
-        new Boundary( // pushes a boundary class object to the boundaries array
-          40 * i + 250, // defines x - 40 is the width of the boundary, plus 250 due to the offset of the image
-          40 * j - 180 // defines x - 40 is the width of the boundary, plus 250 due to the offset of the image
-        )
-      );
     }
   }
 }

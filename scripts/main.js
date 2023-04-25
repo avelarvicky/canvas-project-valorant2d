@@ -4,17 +4,18 @@ const canvas = document.getElementById("canvas"); //canvas
 const ctx = canvas.getContext("2d"); //2d
 
 const buttonL = document.querySelector('.left-bttn') //buttons Left
-const buttonR = document.querySelector('.right-bttn')
-const buttonU = document.querySelector('.up-bttn')
-const buttonD = document.querySelector('.down-bttn')
+const buttonR = document.querySelector('.right-bttn') //buttons
+const buttonU = document.querySelector('.up-bttn') //buttons
+const buttonD = document.querySelector('.down-bttn') //buttons 
 
-const player = new Sprite(360, 210, characterImg); // creates new object for the characterimg        
-const background = new Sprite(250, -180, backgroundImg); // creates new object for the backgroundimg    
+const player = new Sprite(360, 210, characterImg); // creates new object for the characterimg
+let   playerPosition = [1,1];      
+const background = new Sprite(320, 170, backgroundImg); // creates new object for the backgroundimg    
 const bomb = new Sprite(360, 430, bombImg); // creates new object for the bomnimg
 const spikePlanted = new Audio("../textures/spike-planted.mp3")
 const spikeMain = new Audio("../textures/spike-main.m4a")
 
-const game = new Game(background, player, boundaries, bomb);                 // Creates an instance of the Game
+const game = new Game(background, player, bomb, collisionMap);                 // Creates an instance of the Game
 
 window.onload = () => {
   document.addEventListener("keydown", (e) => {
