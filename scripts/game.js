@@ -22,7 +22,7 @@ class Game {
     this.clear(); // Clears previous Frame
     this.background.draw(); // draws the background
     this.player.draw();
-    //this.player.logPos();
+    this.background.logPos();
     this.bomb.draw();
 
     this.checkWinCondition()
@@ -67,7 +67,7 @@ class Game {
     let a = playerPosition[0];
     let b = playerPosition[1];
 
-    if(collisionMap[a+2][b] === 2){
+    if(collisionMap[a+1][b] === 2){
       this.bomb.y -= 40;
       this.background.y -= 40;
       playerPosition[0] +=1;
@@ -80,7 +80,7 @@ class Game {
     let a = playerPosition[0];
     let b = playerPosition[1];
 
-    if(collisionMap[a][b-1] === 2){
+    if(collisionMap[a][b-1] === 2 ){
     this.bomb.x += 40;
     this.background.x += 40;
     playerPosition[1] -=1;
@@ -93,7 +93,7 @@ class Game {
     let a = playerPosition[0];
     let b = playerPosition[1];
 
-    if(collisionMap[a][b+2] === 2){
+    if(collisionMap[a][b+1] === 2 ){
       this.bomb.x -= 40;
       this.background.x -= 40;
       playerPosition[1] +=1;
@@ -107,11 +107,11 @@ class Game {
     let b = playerPosition[1];
 
     if (collisionMap[a][b-1] === 3 ||
-        collisionMap[a][b+2] === 3 ||
-        collisionMap[a+2][b] === 3 ||
+        collisionMap[a][b+1] === 3 ||
+        collisionMap[a+1][b] === 3 ||
         collisionMap[a-1][b] === 3) {
           console.log("bomb here")
-          
+
           ctx.fillStyle = "black";
           ctx.font = "30px Cutive Mono";
           ctx.fillText("You win", 400 - 30, 250);

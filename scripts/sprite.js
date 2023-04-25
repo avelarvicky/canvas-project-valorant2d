@@ -8,6 +8,12 @@ class Sprite {
     draw(){
       ctx.drawImage(this.image, this.x, this.y); 
     }
+
+    logPos(){
+      ctx.fillStyle = "black"
+      ctx.fillText("x: " + this.x, 580, 40);
+      ctx.fillText("y: " + this.y, 580, 60);
+    }
 }
 
 // Assigning player Image
