@@ -6,6 +6,7 @@ body {
   background-color: black;
   background-image: url('../web-images/valorantWebWallpaper.png');
   background-size: cover;
+  background-repeat: no-repeat;
   font-family: "Cutive Mono", monospace;
 }
 
@@ -65,9 +66,14 @@ canvas {
 .description {
   width: 200px;
   height: 250px;
+
   text-align: center;
   display: flex;
   align-items: center;
+
+  background-color: black;
+  color: white;
+
   padding: 10px 10px 10px 10px;
   margin: 0px 10px 0px 10px;
   border: 2mm ridge gray
@@ -81,7 +87,7 @@ canvas {
   align-items: center;
 }
 
-.button-style {
+.button-style-Depressed {
   height: 70px;
   width: 100px;
 
@@ -97,19 +103,44 @@ canvas {
   font-size: 12px;
   font-weight: bold;
 
-  
-  margin: 13px
+  margin: 13px;
 }
+
+.button-style-Pressed {
+  height: 70px;
+  width: 100px;
+
+  background-image: url("../web-images/button-pressed.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-family: "Press Start 2P";
+  font-size: 12px;
+  font-weight: bold;
+
+  margin: 13px;
+}
+
+a:link {
+  margin-top: 15px;
+  color: white;
+  text-decoration: none;
+}
+
+a:visited {
+  margin-top: 15px;
+  color: white;
+  text-decoration: none;
+}
+
+
 
 .button-img {
   width: 150px;
 }
 
-a:link {
-  color: white;
-  text-decoration: none;
-}
-a:visited {
-  color: white;
-  text-decoration: none;
-}
+
