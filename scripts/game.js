@@ -1,11 +1,12 @@
 class Game {
   // game logic
-  constructor(background, player, bomb) {
+  constructor(background, player, bomb, mapShadows) {
     this.width = canvas.width;
     this.height = canvas.height;
     this.player = player;
     this.bomb = bomb;
     this.background = background;
+    this.mapShadows = mapShadows;
     this.intervalId = null;
     this.frames = 0;
     this.timer = 6000;
@@ -22,10 +23,9 @@ class Game {
     this.clear(); // Clears previous Frame
     this.background.draw(); // draws the background
     this.player.draw();
-    this.background.logPos();
     this.bomb.draw();
-
-    this.checkWinCondition()
+    this.mapShadows.draw();
+    this.checkWinCondition();
     this.loseCondition();
     this.countdown();
   };
@@ -57,6 +57,7 @@ class Game {
     if (collisionMap[a-1][b] === 2){
       this.bomb.y += 40;
       this.background.y += 40;
+      this.mapShadows.y += 40,
       playerPosition[0] -=1;
     } else { 
     console.log("collision up");
@@ -70,6 +71,7 @@ class Game {
     if(collisionMap[a+1][b] === 2){
       this.bomb.y -= 40;
       this.background.y -= 40;
+      this.mapShadows.y -= 40,
       playerPosition[0] +=1;
     } else {
       console.log("collision down");
@@ -83,6 +85,7 @@ class Game {
     if(collisionMap[a][b-1] === 2 ){
     this.bomb.x += 40;
     this.background.x += 40;
+    this.mapShadows.x += 40,
     playerPosition[1] -=1;
     } else {
       console.log("collision left");
@@ -96,6 +99,7 @@ class Game {
     if(collisionMap[a][b+1] === 2 ){
       this.bomb.x -= 40;
       this.background.x -= 40;
+      this.mapShadows.x -= 40,
       playerPosition[1] +=1;
     } else {
       console.log("collision right");

@@ -26,7 +26,13 @@ characterImg.src = '../textures/sage_temp.png';
 const backgroundImg = new Image();
 backgroundImg.addEventListener("load", () => {
 this.backgroundImg = backgroundImg;});
-backgroundImg.src = '../textures/mapa_teste.jpg';
+backgroundImg.src = '../textures/ValorantBreeze2D.png';
+
+// Assigning background Image
+const backgroundShadows = new Image();
+backgroundShadows.addEventListener("load", () => {
+this.backgroundShadows = backgroundShadows;});
+backgroundShadows.src = '../textures/ValorantBreeze2D_Shadows.png';
 
 // Assigning bomb Image
 const bombImg = new Image();

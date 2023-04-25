@@ -10,12 +10,13 @@ const buttonD = document.querySelector('.down-bttn') //buttons
 
 const player = new Sprite(360, 210, characterImg); // creates new object for the characterimg
 let   playerPosition = [2,21];      
-const background = new Sprite(-480, 130, backgroundImg); // creates new object for the backgroundimg    
+const background = new Sprite(-480, 130, backgroundImg); // creates new object for the backgroundimg
+const mapShadows = new Sprite(-480, 130, backgroundShadows); // creates new object for the backgroundShadows
 const bomb = new Sprite(360, 430, bombImg); // creates new object for the bomnimg
 const spikePlanted = new Audio("../textures/spike-planted.mp3")
 const spikeMain = new Audio("../textures/spike-main.m4a")
 
-const game = new Game(background, player, bomb, collisionMap);                 // Creates an instance of the Game
+const game = new Game(background, player, bomb, mapShadows);                 // Creates an instance of the Game
 
 window.onload = () => {
   document.addEventListener("keydown", (e) => {

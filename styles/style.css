@@ -39,7 +39,8 @@ h1 {
 }
 
 canvas {
-  background-color: #ffc90d;
+  background-image: url(../textures/water.jpg);
+  background-size: auto;
   border: 4mm ridge rgb(210, 76, 99);
 }
 
@@ -136,8 +137,6 @@ a:visited {
   color: white;
   text-decoration: none;
 }
-
-
 
 .button-img {
   width: 150px;
