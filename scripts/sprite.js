@@ -46,6 +46,19 @@ bombImg.addEventListener("load", () => {
 this.bombImg = bombImg;});
 bombImg.src = '../textures/spike.png';
 
+// Assigning Win Image
+const winImg = new Image();
+winImg.addEventListener("load", () => {
+this.winImg = winImg;});
+winImg.src = '../textures/Win.png';
+
+// Assigning Loss Image
+const lossImg = new Image();
+lossImg.addEventListener("load", () => {
+this.lossImg = lossImg;});
+lossImg.src = '../textures/loss.png';
+
+
 // Assigning enemies Image 
 const enemy1Img = new Image();
 enemy1Img.addEventListener("load", () => {

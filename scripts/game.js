@@ -1,17 +1,20 @@
 class Game {
   // game logic
-  constructor(background, player, bomb, mapShadows, hudUi, enemy1) {
+  constructor(background, player, bomb, mapShadows, hudUi, enemy1, win, loss) {
     this.width = canvas.width;
     this.height = canvas.height;
     this.player = player;
     this.bomb = bomb;
     this.background = background;
     this.mapShadows = mapShadows;
+    this.loss = loss;
+    this.win = win;
     this.hudUi = hudUi;
     this.enemy1 = enemy1;
     this.intervalId = null;
     this.enemiesAnimation = null;
     this.frames = 0;
+    this.playerPos = [2,21];
     this.enemy1Pos = [15,17];
     this.timer = 6000;
   }
@@ -26,16 +29,18 @@ class Game {
   update = () => {
     this.frames++; // Counts the frames since the game started
     this.clear(); // Clears previous Frame
+    
     this.background.draw(); // draws the background
     this.player.draw();
     this.bomb.draw();
     this.enemy1.draw();
     this.mapShadows.draw();
-    this.checkWinCondition();
-    this.loseCondition();
-    
+
     this.hudUi.draw();
     this.countdown();
+
+    this.checkWinCondition();
+    this.loseCondition();
   };
 
   enemiesUpdate = () => {
@@ -70,21 +75,21 @@ class Game {
 
   // player movement
   moveUp() {
-    let a = playerPosition[0];
-    let b = playerPosition[1];
+    let a = this.playerPos[0];
+    let b = this.playerPos[1];
 
     if (collisionMap[a-1][b] === 2){
       this.bomb.y += 40;
       this.background.y += 40;
       this.mapShadows.y += 40;
       this.enemy1.y += 40;
-      playerPosition[0] -=1;
+      this.playerPos[0] -=1;
     }
   }
 
   moveDown() {
-    let a = playerPosition[0];
-    let b = playerPosition[1];
+    let a = this.playerPos[0];
+    let b = this.playerPos[1];
     console.log(a, b);
 
     if(collisionMap[a+1][b] === 2){
@@ -93,38 +98,34 @@ class Game {
       this.background.y -= 40;
       this.mapShadows.y -= 40;
       this.enemy1.y -= 40;
-      playerPosition[0] +=1;
+      this.playerPos[0] +=1;
     } 
   }
 
   moveLeft() {
-    let a = playerPosition[0];
-    let b = playerPosition[1];
+    let a = this.playerPos[0];
+    let b = this.playerPos[1];
 
     if(collisionMap[a][b-1] === 2 ){
     this.bomb.x += 40;
     this.background.x += 40;
     this.mapShadows.x += 40;
     this.enemy1.x += 40;
-    playerPosition[1] -=1;
+    this.playerPos[1] -=1;
     } 
   }
 
   moveRight() {
-    let a = playerPosition[0];
-    let b = playerPosition[1];
+    let a = this.playerPos[0];
+    let b = this.playerPos[1];
 
     if(collisionMap[a][b+1] === 2 ){
       this.bomb.x -= 40;
       this.background.x -= 40;
       this.mapShadows.x -= 40;
       this.enemy1.x -= 40;
-      playerPosition[1] +=1;
-      console.log(a,b);
-      console.log(collisionMap);
+      this.playerPos[1] +=1;
     } 
-
-    
   }
 
   // enemy movement
@@ -140,38 +141,20 @@ class Game {
         this.enemy1Pos[0] -= 1;
       } 
     }
-    
-    /*
-    if (direction === 'down'){
-      if (collisionMap[a+1][b] === 2) {
-        this.enemy1.y += 40;
-        enemy1Position[0] += 1;
-      } else {
-        this.enemy1Move('up')
-      }
-    } else if( direction === 'up'){
-      if (collisionMap[a-1][b] === 2) { // limite cima
-        this.enemy1.y -= 40;
-        enemy1Position[0] -= 1;
-      }
-      this.enemy1Move('down') 
-    }*/
 
   // game logic  
-
   checkWinCondition() {
-    let a = playerPosition[0];
-    let b = playerPosition[1];
+    let a = this.playerPos[0];
+    let b = this.playerPos[1];
 
     if (collisionMap[a][b-1] === 3 ||
         collisionMap[a][b+1] === 3 ||
         collisionMap[a+1][b] === 3 ||
         collisionMap[a-1][b] === 3) {
-          console.log("bomb here")
 
           ctx.fillStyle = "black";
           ctx.font = "30px Arial";
-          ctx.fillText("You win", 400 - 30, 250);
+          this.win.draw();
     }
   }
 
@@ -179,7 +162,7 @@ class Game {
     if (this.timer <= 0) {
       ctx.fillStyle = "black";
       ctx.font = "30px Arial";
-      ctx.fillText("Game Over", 400 - 30, 250);
+      this.loss.draw();
     }
   }
 }
