@@ -39,9 +39,9 @@ class Game {
     let seconds = Math.floor(this.timer / 100);
 
     if (this.timer >= 0) {
-      ctx.fillStyle = "black";
+      ctx.fillStyle = "white";
       ctx.font = "40px Cutive Mono";
-      ctx.fillText(`${seconds}`, 380, 30);
+      ctx.fillText(`${seconds}`, 370, 50);
     }
   }
 
