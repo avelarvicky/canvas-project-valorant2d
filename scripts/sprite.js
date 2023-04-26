@@ -45,3 +45,9 @@ const bombImg = new Image();
 bombImg.addEventListener("load", () => {
 this.bombImg = bombImg;});
 bombImg.src = '../textures/spike.png';
+
+// Assigning enemies Image 
+const enemy1Img = new Image();
+enemy1Img.addEventListener("load", () => {
+this.enemy1Img = enemy1Img;})
+enemy1Img.src = '../textures/enemy1.png'
