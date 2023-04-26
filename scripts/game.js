@@ -12,6 +12,7 @@ class Game {
     this.intervalId = null;
     this.enemiesAnimation = null;
     this.frames = 0;
+    this.enemy1Pos = [15,17];
     this.timer = 6000;
   }
 
@@ -75,28 +76,25 @@ class Game {
     if (collisionMap[a-1][b] === 2){
       this.bomb.y += 40;
       this.background.y += 40;
-      this.mapShadows.y += 40,
-      this.enemy1.y += 40,
+      this.mapShadows.y += 40;
+      this.enemy1.y += 40;
       playerPosition[0] -=1;
-      console.log(a,b)
-    } else { 
-    console.log("collision up");
     }
   }
 
   moveDown() {
     let a = playerPosition[0];
     let b = playerPosition[1];
+    console.log(a, b);
 
     if(collisionMap[a+1][b] === 2){
+      console.log(a,b);
       this.bomb.y -= 40;
       this.background.y -= 40;
-      this.mapShadows.y -= 40,
-      this.enemy1.y -= 40,
+      this.mapShadows.y -= 40;
+      this.enemy1.y -= 40;
       playerPosition[0] +=1;
-    } else {
-      console.log("collision down");
-    }
+    } 
   }
 
   moveLeft() {
@@ -106,12 +104,10 @@ class Game {
     if(collisionMap[a][b-1] === 2 ){
     this.bomb.x += 40;
     this.background.x += 40;
-    this.mapShadows.x += 40,
-    this.enemy1.x += 40,
+    this.mapShadows.x += 40;
+    this.enemy1.x += 40;
     playerPosition[1] -=1;
-    } else {
-      console.log("collision left");
-    }
+    } 
   }
 
   moveRight() {
@@ -121,27 +117,29 @@ class Game {
     if(collisionMap[a][b+1] === 2 ){
       this.bomb.x -= 40;
       this.background.x -= 40;
-      this.mapShadows.x -= 40,
-      this.enemy1.x -= 40,
+      this.mapShadows.x -= 40;
+      this.enemy1.x -= 40;
       playerPosition[1] +=1;
-    } else {
-      console.log("collision right");
-    }
-    console.log(a,b)
+      console.log(a,b);
+      console.log(collisionMap);
+    } 
+
+    
   }
 
   // enemy movement
   enemy1Move() {
-
-    let a = enemy1Position[0];
-    let b = enemy1Position[1];
-
-    
-    if (collisionMap[a-1][b] === 2) {
-      this.enemy1.y -= 40;
-      enemy1Position[0]-=1;
-      console.log(a,b)
-    } 
+      let a = this.enemy1Pos[0];
+      let b = this.enemy1Pos[1];
+  
+      if(a === 11 && b === 16){
+        this.enemy1.y += 40;
+        this.enemy1Pos[0] += 1;
+      } else if (collisionMap[a-1][b] === 2) {
+        this.enemy1.y -= 40;
+        this.enemy1Pos[0] -= 1;
+      } 
+    }
     
     /*
     if (direction === 'down'){
@@ -158,7 +156,6 @@ class Game {
       }
       this.enemy1Move('down') 
     }*/
-  }
 
   // game logic  
 
@@ -186,3 +183,4 @@ class Game {
     }
   }
 }
+

@@ -21,7 +21,6 @@ const player = new Sprite(360, 210, characterImg); // creates new object for the
 let   playerPosition = [2,21]; 
 
 const enemy1 = new Sprite(200, 730, enemy1Img);    // creates new object for the enemy1
-let   enemy1Position = [13,16];
 
 // ' ' = wall
 // 2 = chao
