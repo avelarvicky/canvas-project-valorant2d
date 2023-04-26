@@ -1,12 +1,13 @@
 class Game {
   // game logic
-  constructor(background, player, bomb, mapShadows) {
+  constructor(background, player, bomb, mapShadows, hudUi) {
     this.width = canvas.width;
     this.height = canvas.height;
     this.player = player;
     this.bomb = bomb;
     this.background = background;
     this.mapShadows = mapShadows;
+    this.hudUi = hudUi;
     this.intervalId = null;
     this.frames = 0;
     this.timer = 6000;
@@ -27,6 +28,7 @@ class Game {
     this.mapShadows.draw();
     this.checkWinCondition();
     this.loseCondition();
+    this.hudUi.draw();
     this.countdown();
   };
 
@@ -39,9 +41,16 @@ class Game {
     let seconds = Math.floor(this.timer / 100);
 
     if (this.timer >= 0) {
-      ctx.fillStyle = "white";
-      ctx.font = "40px Cutive Mono";
-      ctx.fillText(`${seconds}`, 370, 50);
+      if (seconds < 10){
+        ctx.fillStyle = "white";
+        ctx.font = "25px Cutive Mono";
+        ctx.fillText(`0:0${seconds}`, 380, 40);
+      }
+      else {
+        ctx.fillStyle = "white";
+        ctx.font = "25px Cutive Mono";
+        ctx.fillText(`0:${seconds}`, 380, 40);
+      }
     }
   }
 

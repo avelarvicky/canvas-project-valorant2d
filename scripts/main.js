@@ -12,11 +12,12 @@ const player = new Sprite(360, 210, characterImg); // creates new object for the
 let   playerPosition = [2,21];      
 const background = new Sprite(-480, 130, backgroundImg); // creates new object for the backgroundimg
 const mapShadows = new Sprite(-480, 130, backgroundShadows); // creates new object for the backgroundShadows
+const hudUi= new Sprite(0,0, hudImg); // creates new object for the Hud Img
 const bomb = new Sprite(360, 430, bombImg); // creates new object for the bomnimg
 const spikePlanted = new Audio("../textures/spike-planted.mp3")
 const spikeMain = new Audio("../textures/spike-main.m4a")
 
-const game = new Game(background, player, bomb, mapShadows);                 // Creates an instance of the Game
+const game = new Game(background, player, bomb, mapShadows, hudUi);                 // Creates an instance of the Game
 
 window.onload = () => {
   document.addEventListener("keydown", (e) => {

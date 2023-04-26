@@ -28,11 +28,17 @@ backgroundImg.addEventListener("load", () => {
 this.backgroundImg = backgroundImg;});
 backgroundImg.src = '../textures/ValorantBreeze2D.png';
 
-// Assigning background Image
+// Assigning background Shadows Image
 const backgroundShadows = new Image();
 backgroundShadows.addEventListener("load", () => {
 this.backgroundShadows = backgroundShadows;});
 backgroundShadows.src = '../textures/ValorantBreeze2D_Shadows.png';
+
+// Assigning Hud
+const hudImg = new Image();
+hudImg.addEventListener("load", () => {
+this.hudImg = hudImg;});
+hudImg.src = '../textures/hud.png';
 
 // Assigning bomb Image
 const bombImg = new Image();
