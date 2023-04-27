@@ -13,8 +13,8 @@ const mapShadows = new Sprite(-1200, -980, backgroundShadows); // creates new ob
 const hudUi= new Sprite(0,0, hudImg); // creates new object for the Hud Img
 
 const spikePlanted = new Audio("docs/assets/audio/spike-planted.mp3");
-const spikeMain = new Audio("docs/assets/audio/spike-main.m4a");
-const bgMusic = new Audio("docs/assets/audio/val-instrumental.m4a");
+const spikeMain = new Audio("docs/assets/audio/spike-main.mp3");
+const bgMusic = new Audio("docs/assets/audio/val-instrumental.mp3");
 bgMusic.play();
 
 const bomb = new Sprite(-1120, -465, bombImg); // creates new object for the bomnimg
