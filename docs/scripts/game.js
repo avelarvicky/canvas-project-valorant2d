@@ -97,6 +97,8 @@ class Game {
       this.enemy2.y += 40;
       this.enemy3.y += 40;
       this.playerPos[0] -=1;
+
+      footsteps.play();
     }
   }
 
@@ -112,6 +114,8 @@ class Game {
       this.enemy2.y -= 40;
       this.enemy3.y -= 40;
       this.playerPos[0] +=1;
+
+      footsteps.play();
     } 
   }
 
@@ -127,6 +131,8 @@ class Game {
     this.enemy2.x += 40;
     this.enemy3.x += 40;
     this.playerPos[1] -=1;
+
+    footsteps.play();
     } 
   }
 
@@ -142,6 +148,8 @@ class Game {
       this.enemy2.x -= 40;
       this.enemy3.x -= 40;
       this.playerPos[1] +=1;
+
+      footsteps.play();
     } 
   }
 
@@ -154,18 +162,22 @@ class Game {
       this.enemy1Move("down")
       this.enemy2Move("left")
       this.enemy3Move("right")
+      footsteps.pause();
     } else if(random === 2){
       this.enemy1Move("left")
       this.enemy2Move("up")
       this.enemy3Move("down")
+      footsteps.pause();
     } else if(random === 3){
       this.enemy1Move("right")
       this.enemy2Move("down")
       this.enemy3Move("left")
+      footsteps.pause();
     } else {
       this.enemy1Move("up")
       this.enemy2Move("right")
       this.enemy3Move("up")
+      footsteps.pause();
     }
   }
 
@@ -265,6 +277,7 @@ class Game {
           ctx.font = "30px Arial";
           this.stop();
           this.win.draw();
+          sageClutch.play();
     }
   }
 
@@ -275,15 +288,18 @@ class Game {
                this.playerPos[1] === this.enemy1Pos[1]){
                 this.stop();
           this.loss.draw();
+          sageLost.play();
     } else if (this.playerPos[0] === this.enemy2Pos[0] && 
                this.playerPos[1] === this.enemy2Pos[1]){   
                 this.stop();   
           this.loss.draw();
+          sageLost.play();
     } else if (this.playerPos[0] === this.enemy3Pos[0] && 
                this.playerPos[1] === this.enemy3Pos[1]){
                 this.stop();
           this.loss.draw();
+          sageLost.play();
+        }
     }
-  }
 }
 

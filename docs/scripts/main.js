@@ -14,7 +14,11 @@ const hudUi= new Sprite(0,0, hudImg); // creates new object for the Hud Img
 
 const spikePlanted = new Audio("docs/assets/audio/spike-planted.mp3");
 const spikeMain = new Audio("docs/assets/audio/spike-main.mp3");
+const sageClutch = new Audio("docs/assets/audio/sage-clutch.mp3");
+const sageLost = new Audio("docs/assets/audio/sage-lost.mp3");
+const footsteps = new Audio("docs/assets/audio/footsteps.mp3")
 const bgMusic = new Audio("docs/assets/audio/val-instrumental.mp3");
+bgMusic.volume = 0.15
 bgMusic.play();
 
 const bomb = new Sprite(-1120, -465, bombImg); // creates new object for the bomnimg
