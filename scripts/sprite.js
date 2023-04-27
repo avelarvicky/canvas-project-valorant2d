@@ -60,7 +60,21 @@ lossImg.src = '../textures/loss.png';
 
 
 // Assigning enemies Image 
+
+//E 1
 const enemy1Img = new Image();
 enemy1Img.addEventListener("load", () => {
 this.enemy1Img = enemy1Img;})
 enemy1Img.src = '../textures/enemy1.png'
+
+//E 2
+const enemy2Img = new Image();
+enemy2Img.addEventListener("load", () => {
+this.enemy2Img = enemy2Img;})
+enemy2Img.src = '../textures/enemy2.png'
+
+//E 3
+const enemy3Img = new Image();
+enemy3Img.addEventListener("load", () => {
+this.enemy3Img = enemy3Img;})
+enemy3Img.src = '../textures/enemy3.png'
