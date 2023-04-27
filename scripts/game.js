@@ -20,7 +20,7 @@ class Game {
   }
 
   start() {
-    this.intervalId = setInterval(this.update, 100); // sets the clock speed of the game running at 100fps (1000ms / 10ms)
+    this.intervalId = setInterval(this.update, 10); // sets the clock speed of the game running at 100fps (1000ms / 10ms)
     this.enemiesAnimation = setInterval(this.enemiesUpdate, 250);
     spikePlanted.play();
     spikeMain.play();
@@ -44,7 +44,7 @@ class Game {
   };
 
   enemiesUpdate = () => {
-    this.enemy1Move();
+    this.enemiesMove()
   } 
 
   stop() {
@@ -129,18 +129,32 @@ class Game {
   }
 
   // enemy movement
-  enemy1Move() {
+  enemy1Move(direction) {
       let a = this.enemy1Pos[0];
       let b = this.enemy1Pos[1];
   
-      if(a === 11 && b === 16){
-        this.enemy1.y += 40;
-        this.enemy1Pos[0] += 1;
-      } else if (collisionMap[a-1][b] === 2) {
-        this.enemy1.y -= 40;
-        this.enemy1Pos[0] -= 1;
-      } 
+      if ( direction === "up"){
+        if (collisionMap[a-1][b] === 2) {
+          this.enemy1.y -= 40;
+          this.enemy1Pos[0] -= 1;
+        } 
+      }else {
+        if (collisionMap[a+1][b] === 2) {
+          this.enemy1.y += 40;
+          this.enemy1Pos[0] += 1;
+        }
+      }
     }
+
+  enemiesMove(){
+    let random = (Math.random() <= 0.5) ? 1 : 2;
+
+    if (random === 1){
+      this.enemy1Move("down")
+    } else {
+      this.enemy1Move("up")
+    }
+  } 
 
   // game logic  
   checkWinCondition() {
