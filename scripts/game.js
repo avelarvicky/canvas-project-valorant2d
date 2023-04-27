@@ -20,7 +20,7 @@ class Game {
   }
 
   start() {
-    this.intervalId = setInterval(this.update, 10); // sets the clock speed of the game running at 100fps (1000ms / 10ms)
+    this.intervalId = setInterval(this.update, 100); // sets the clock speed of the game running at 100fps (1000ms / 10ms)
     this.enemiesAnimation = setInterval(this.enemiesUpdate, 250);
     spikePlanted.play();
     spikeMain.play();
