@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
 body {
   margin: 0;
@@ -79,7 +79,7 @@ canvas {
 
   padding: 10px 10px 10px 10px;
   margin: 0px 10px 0px 10px;
-  border: 2mm ridge gray
+  border: 2mm ridge gray;
 }
 
 .button-container {
@@ -143,7 +143,3 @@ a:visited {
 .button-img {
   width: 150px;
 }
-
-
-
-
